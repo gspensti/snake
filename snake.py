@@ -10,10 +10,10 @@ def draw_map(coordinates):
             columns.append(".")  # fills inner/smaller lists within every row with dots 
         rows.append(columns) # fills "big" list with now filled smaller list after range is done
 
-    for x,y in coordinates:
-        rows [x][y] = "X"
+    for x,y in coordinates: # replaces . for x on given coordinates 
+        rows [x][y] = "X" # x = rows, y = columns
 
     for row in rows:
-       print(row)
+       print(row) # prints grid
 
 draw_map([(0,0),(1,0),(2,2),(4,3),(8,9),(8,9)])
