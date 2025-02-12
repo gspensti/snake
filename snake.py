@@ -16,8 +16,6 @@ def draw_map(coordinates):
     for row in rows:
        print(row) # prints grid
 
-draw_map([(0,0),(1,0),(2,2),(4,3),(8,9),(8,9)])
-
 # 2 Write a movement function that gets the coordinates as a list and the direction keyword
 # ('n','s','e','w') (north, south, east, west) and adds to that list, the last point “moved” - added
 # in that direction. 
@@ -37,10 +35,23 @@ def move (coordinates, letter):
     coordinates.append(coord_tuple) # appends list of coordinates with newly created tuple containing changed values for x & y (appends adds to end of list)
     print(coordinates) # just for testing!
 
-        
-move ([(0,0)], 'e')
-move ([(0,0),(0,1),(0,2)], 'e')
-move ([(0,0),(0,1),(0,2)], 's')
+def play (coordinates):     # now, with no checks of boundaries, snake turns up at opposite side of field (but only if North or South) 
+    while True:
+        draw_map(coordinates) # calls draw function before every move (can be omitted i guess?)
+        direction = input("Where do you want to go? North, East, South, or West: ")
+        if direction == "East": # calls move function, depending on dorection 
+            move(coordinates, "e")
+        elif direction == "North":
+            move(coordinates, "n")
+        elif direction == "South":
+            move(coordinates, "s")
+        elif direction == "West":
+            move(coordinates, "w")
+        elif direction =="end": # ends game when user types end 
+            break
+        else:
+            print("Input invalid, please try again!") # asks user again if input is invalid 
 
+play ([(0,0),(0,1),(0,2)])
 
 
